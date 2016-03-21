@@ -21,11 +21,10 @@ var ToDoList;
     ToDoList.Task = Task;
     var HomeTask = (function (_super) {
         __extends(HomeTask, _super);
-        function HomeTask(description, priority, taskType, assignedTo) {
+        function HomeTask(description, priority, assignedTo) {
             _super.call(this, description, priority, "home");
             this.description = description;
             this.priority = priority;
-            this.taskType = taskType;
             this.assignedTo = assignedTo;
         }
         return HomeTask;
@@ -43,7 +42,7 @@ var ToDoList;
     var WorkTask = (function (_super) {
         __extends(WorkTask, _super);
         function WorkTask(dueDate, description, priority, assignedTo) {
-            _super.call(this, description, priority, assignedTo, "work");
+            _super.call(this, description, priority, "work", assignedTo);
             this.dueDate = dueDate;
             this.description = description;
             this.priority = priority;
@@ -92,7 +91,7 @@ var ToDoList;
         for (var _i = 0, taskCollection_2 = taskCollection; _i < taskCollection_2.length; _i++) {
             var task = taskCollection_2[_i];
             if (task.taskType === type) {
-                types.push(task.type);
+                types.push(task.description);
             }
         }
         return types;
@@ -129,5 +128,17 @@ var homeTasks = ToDoList.listTasksByType("home", tasks);
 console.log("Here are the Home Tasks: ");
 for (var _a = 0, homeTasks_1 = homeTasks; _a < homeTasks_1.length; _a++) {
     var task = homeTasks_1[_a];
+    console.log(task);
+}
+var workTasks = ToDoList.listTasksByType("work", tasks);
+console.log("Here are the Work Tasks: ");
+for (var _b = 0, workTasks_1 = workTasks; _b < workTasks_1.length; _b++) {
+    var task = workTasks_1[_b];
+    console.log(task);
+}
+var hobbyTasks = ToDoList.listTasksByType("hobby", tasks);
+console.log("Here are the Hobby Tasks: ");
+for (var _c = 0, hobbyTasks_1 = hobbyTasks; _c < hobbyTasks_1.length; _c++) {
+    var task = hobbyTasks_1[_c];
     console.log(task);
 }

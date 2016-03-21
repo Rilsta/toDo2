@@ -35,3 +35,15 @@ console.log("Here are the Home Tasks: ");
 for(var task of homeTasks){
   console.log(task);
 }
+
+var workTasks = ToDoList.listTasksByType("work", tasks);
+console.log("Here are the Work Tasks: ");
+for(var task of workTasks){
+  console.log(task);
+}
+
+var hobbyTasks = ToDoList.listTasksByType("hobby", tasks);
+console.log("Here are the Hobby Tasks: ");
+for(var task of hobbyTasks){
+  console.log(task);
+}

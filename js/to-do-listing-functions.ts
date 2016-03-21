@@ -12,12 +12,12 @@ module ToDoList {
     return descriptions;
   }
 
-  export var listTasksByType = function(type: taskType, taskCollection: Task[]):
+  export var listTasksByType = function(type: string, taskCollection: Task[]):
   String[] {
     var types: String[] = [];
     for( var task of taskCollection){
       if(task.taskType === type) {
-        types.push(task.type);
+        types.push(task.description);
       }
     }
     return types;

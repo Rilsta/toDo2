@@ -29,7 +29,6 @@ module ToDoList {
   export class HomeTask extends Task {
       constructor(public description: string,
                   public priority: string,
-                  public taskType: string,
                   public assignedTo?: IPerson){
         super(description, priority, "home");
     }
@@ -45,8 +44,8 @@ module ToDoList {
     constructor(public dueDate: Date,
                 public description: string,
                 public priority: string,
-                public assignedTo: IPerson){
-      super(description, priority, assignedTo, "work");
+                public assignedTo?: IPerson){
+      super(description, priority, "work", assignedTo);
     }
   }
 }
