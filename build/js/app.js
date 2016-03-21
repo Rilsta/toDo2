@@ -3,6 +3,13 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+// /// <reference path="to-do-classes-interfaces.ts" />
+// /// <reference path="to-do-people.ts" />
+// /// <reference path="to-do-listing-functions.ts" />
+//
+// $(document).ready(function() {
+//
+// });
 var ToDoList;
 (function (ToDoList) {
     var Task = (function () {
@@ -33,7 +40,7 @@ var ToDoList;
     var HobbyTask = (function (_super) {
         __extends(HobbyTask, _super);
         function HobbyTask(description) {
-            _super.call(this, description, "low", "hobby");
+            _super.call(this, description, "Low", "hobby");
             this.description = description;
         }
         return HobbyTask;
@@ -96,6 +103,26 @@ var ToDoList;
         }
         return types;
     };
+    ToDoList.listTasksByPriority = function (taskPriority, taskCollection) {
+        var priorities = [];
+        for (var _i = 0, taskCollection_3 = taskCollection; _i < taskCollection_3.length; _i++) {
+            var task = taskCollection_3[_i];
+            if (task.priority === taskPriority) {
+                priorities.push(task.description);
+            }
+        }
+        return priorities;
+    };
+    ToDoList.personHighPriority = function (highPriority, assignee, taskCollection) {
+        var highPerson = [];
+        for (var _i = 0, taskCollection_4 = taskCollection; _i < taskCollection_4.length; _i++) {
+            var task = taskCollection_4[_i];
+            if ((task.priority === highPriority) && (task.assignedTo === assignee)) {
+                highPerson.push(task.description);
+            }
+        }
+        return highPerson;
+    };
 })(ToDoList || (ToDoList = {}));
 /// <reference path="to-do-classes-interfaces.ts" />
 /// <reference path="to-do-people.ts" />
@@ -113,7 +140,7 @@ tomorrow.setDate(today.getDate() + 1);
 var nextDay = new Date();
 nextDay.setDate(today.getDate() + 2);
 tasks.push(new ToDoList.WorkTask(today, "Update blog.", "High", people.diane));
-tasks.push(new ToDoList.WorkTask(tomorrow, "Go to meeting.", "Medium", people.thor));
+tasks.push(new ToDoList.WorkTask(tomorrow, "Go to meeting.", "High", people.thor));
 tasks.push(new ToDoList.WorkTask(tomorrow, "Save the world.", "High", people.thor));
 tasks.push(new ToDoList.WorkTask(tomorrow, "Buy a new shirt.", "Low", people.thor));
 tasks.push(new ToDoList.WorkTask(nextDay, "Clean ceiling.", "Low", people.loki));
@@ -142,3 +169,50 @@ for (var _c = 0, hobbyTasks_1 = hobbyTasks; _c < hobbyTasks_1.length; _c++) {
     var task = hobbyTasks_1[_c];
     console.log(task);
 }
+var lowTasks = ToDoList.listTasksByPriority("Low", tasks);
+console.log("Here are the Low Priority Tasks: ");
+for (var _d = 0, lowTasks_1 = lowTasks; _d < lowTasks_1.length; _d++) {
+    var task = lowTasks_1[_d];
+    console.log(task);
+}
+var mediumTasks = ToDoList.listTasksByPriority("Medium", tasks);
+console.log("Here are the Medium Priority Tasks: ");
+for (var _e = 0, mediumTasks_1 = mediumTasks; _e < mediumTasks_1.length; _e++) {
+    var task = mediumTasks_1[_e];
+    console.log(task);
+}
+var highTasks = ToDoList.listTasksByPriority("High", tasks);
+console.log("Here are the High Priority Tasks: ");
+for (var _f = 0, highTasks_1 = highTasks; _f < highTasks_1.length; _f++) {
+    var task = highTasks_1[_f];
+    console.log(task);
+}
+$(document).ready(function () {
+    var highThor = ToDoList.personHighPriority("High", people.thor, tasks);
+    for (var _i = 0, highThor_1 = highThor; _i < highThor_1.length; _i++) {
+        var task = highThor_1[_i];
+        $("#thorHighest").append("Here is Thor's highest task: " + task);
+        {
+            break;
+        }
+    }
+    ;
+    var highDiane = ToDoList.personHighPriority("High", people.diane, tasks);
+    for (var _a = 0, highDiane_1 = highDiane; _a < highDiane_1.length; _a++) {
+        var task = highDiane_1[_a];
+        $("#dianeHighest").append("Here is Diane's highest task: " + task);
+        {
+            break;
+        }
+    }
+    ;
+    var highLoki = ToDoList.personHighPriority("High", people.loki, tasks);
+    for (var _b = 0, highLoki_1 = highLoki; _b < highLoki_1.length; _b++) {
+        var task = highLoki_1[_b];
+        $("#lokiHighest").append("Here is Loki's highest task: " + task);
+        {
+            break;
+        }
+    }
+    ;
+});

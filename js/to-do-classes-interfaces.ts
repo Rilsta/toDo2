@@ -36,7 +36,7 @@ module ToDoList {
 
   export class HobbyTask extends Task{
     constructor(public description: string) {
-      super(description, "low", "hobby");
+      super(description, "Low", "hobby");
     }
   }
 
