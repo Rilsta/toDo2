@@ -140,6 +140,7 @@ tomorrow.setDate(today.getDate() + 1);
 var nextDay = new Date();
 nextDay.setDate(today.getDate() + 2);
 tasks.push(new ToDoList.WorkTask(today, "Update blog.", "High", people.diane));
+tasks.push(new ToDoList.WorkTask(tomorrow, "Eat tacos.", "High", people.thor));
 tasks.push(new ToDoList.WorkTask(tomorrow, "Go to meeting.", "High", people.thor));
 tasks.push(new ToDoList.WorkTask(tomorrow, "Save the world.", "High", people.thor));
 tasks.push(new ToDoList.WorkTask(tomorrow, "Buy a new shirt.", "Low", people.thor));
@@ -151,40 +152,52 @@ for (var _i = 0, thorTasks_1 = thorTasks; _i < thorTasks_1.length; _i++) {
     var task = thorTasks_1[_i];
     console.log(task);
 }
+var dianeTasks = ToDoList.describeTasksForPerson(people.diane, tasks);
+console.log("Here are Diane's tasks: ");
+for (var _a = 0, dianeTasks_1 = dianeTasks; _a < dianeTasks_1.length; _a++) {
+    var task = dianeTasks_1[_a];
+    console.log(task);
+}
+var lokiTasks = ToDoList.describeTasksForPerson(people.loki, tasks);
+console.log("Here are Loki's tasks: ");
+for (var _b = 0, lokiTasks_1 = lokiTasks; _b < lokiTasks_1.length; _b++) {
+    var task = lokiTasks_1[_b];
+    console.log(task);
+}
 var homeTasks = ToDoList.listTasksByType("home", tasks);
 console.log("Here are the Home Tasks: ");
-for (var _a = 0, homeTasks_1 = homeTasks; _a < homeTasks_1.length; _a++) {
-    var task = homeTasks_1[_a];
+for (var _c = 0, homeTasks_1 = homeTasks; _c < homeTasks_1.length; _c++) {
+    var task = homeTasks_1[_c];
     console.log(task);
 }
 var workTasks = ToDoList.listTasksByType("work", tasks);
 console.log("Here are the Work Tasks: ");
-for (var _b = 0, workTasks_1 = workTasks; _b < workTasks_1.length; _b++) {
-    var task = workTasks_1[_b];
+for (var _d = 0, workTasks_1 = workTasks; _d < workTasks_1.length; _d++) {
+    var task = workTasks_1[_d];
     console.log(task);
 }
 var hobbyTasks = ToDoList.listTasksByType("hobby", tasks);
 console.log("Here are the Hobby Tasks: ");
-for (var _c = 0, hobbyTasks_1 = hobbyTasks; _c < hobbyTasks_1.length; _c++) {
-    var task = hobbyTasks_1[_c];
+for (var _e = 0, hobbyTasks_1 = hobbyTasks; _e < hobbyTasks_1.length; _e++) {
+    var task = hobbyTasks_1[_e];
     console.log(task);
 }
 var lowTasks = ToDoList.listTasksByPriority("Low", tasks);
 console.log("Here are the Low Priority Tasks: ");
-for (var _d = 0, lowTasks_1 = lowTasks; _d < lowTasks_1.length; _d++) {
-    var task = lowTasks_1[_d];
+for (var _f = 0, lowTasks_1 = lowTasks; _f < lowTasks_1.length; _f++) {
+    var task = lowTasks_1[_f];
     console.log(task);
 }
 var mediumTasks = ToDoList.listTasksByPriority("Medium", tasks);
 console.log("Here are the Medium Priority Tasks: ");
-for (var _e = 0, mediumTasks_1 = mediumTasks; _e < mediumTasks_1.length; _e++) {
-    var task = mediumTasks_1[_e];
+for (var _g = 0, mediumTasks_1 = mediumTasks; _g < mediumTasks_1.length; _g++) {
+    var task = mediumTasks_1[_g];
     console.log(task);
 }
 var highTasks = ToDoList.listTasksByPriority("High", tasks);
 console.log("Here are the High Priority Tasks: ");
-for (var _f = 0, highTasks_1 = highTasks; _f < highTasks_1.length; _f++) {
-    var task = highTasks_1[_f];
+for (var _h = 0, highTasks_1 = highTasks; _h < highTasks_1.length; _h++) {
+    var task = highTasks_1[_h];
     console.log(task);
 }
 $(document).ready(function () {
